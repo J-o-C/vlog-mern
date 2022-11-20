@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+nav {
+    background-color: #363636;
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    overflow: auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15%;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+li a {
+    display: block;
+    margin: 0px 20px;
+    padding: 10px;
+    text-decoration: none;
+    color: #f6f6f6;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+li a:hover {
+    background-color: #464646;
+
+}
+
+.active {
+    background-color: #295760;
+    color: #02bbe0;
+}
