@@ -1,16 +1,29 @@
+import {useState, useRef} from "react";
 
 function Compose (props) {
 
-    const date = new Date();
-    
+    const date = useRef(new Date());
+    const [text, setText] = useState("");
+
+    const data = {
+        date: date.current.toLocaleDateString() + " - " + date.current.toLocaleTimeString(),
+        text: text
+        
+    }
+
+    function handleChange (event) {
+        const value = event.target.value;
+        setText(value)
+    }
+
 
     return (
         <div>
 
-            <button className="add" onClick={props.changeDoRender}>Add</button>
-            <h2 className="date">{date.toLocaleDateString() + " - " + date.toLocaleTimeString()}</h2>
+            <button className="add" onClick={() => {props.addEntry(data)}}>Add</button>
+            <h2 className="date">{date.current.toLocaleDateString() + " - " + date.current.toLocaleTimeString()}</h2>
 
-            <textarea className="text-box"></textarea>
+            <textarea onChange={handleChange} value={text} name="text" className="text-box"></textarea>
         </div>
     );
 }

@@ -26,7 +26,6 @@ body {
     top: 20%;
     left: 30%;
     width: 55%;
-    background-color: green;
     color: white;
 }
 
@@ -84,4 +83,58 @@ body {
     height: 50px;
     background-color: #14c4e8;
     color: white;
+}
+
+.loading {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+    border: 10px dotted gray;
+    animation: loading 2.5s linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0);
+        border-color: #B8C6DB;
+    }
+
+    25% {
+        transform: rotate(90deg);
+        border-color: #DAF8FD;
+    }
+
+    50% {
+        transform: rotate(180deg);
+        border-color: #FDFAFF;
+    }
+
+    75% {
+        transform: rotate(270deg);
+        border-color: #DAF8FD;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        border-color: #B8C6DB;
+    }
+}
+
+.entry {
+    padding: 20px;
+    border-bottom: 1px solid #2f2f2f;
+    transition: background-color 0.3s;
+}
+
+.entry:hover {
+    background-color: #252525;
+}
+
+.date-entry {
+    color: #14c4e8;
+}
+
+a {
+    text-decoration: none;
 }
