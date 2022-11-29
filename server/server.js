@@ -23,8 +23,15 @@ const Entry = mongoose.model("Entry", entrySchema);
 
 server.get("/entries", async (req, res) => {
     const entries = await Entry.find().exec();
+    entries.reverse();
     res.send(JSON.stringify(entries));
 
+});
+
+server.get("/single/:id", async (req, res) => {
+    const {id} = req.params;
+    const singleEntry = await Entry.find({_id: id}).exec();
+    res.send(JSON.stringify(singleEntry));
 });
 
 
@@ -40,7 +47,10 @@ server.post("/compose", async (req, res) => {
 
 });
 
-
+server.post("/delete", async (req, res) => {
+    await Entry.deleteOne({_id: req.body.id}); 
+    res.send(JSON.stringify({res: "okay"}));
+});
 
 const port = 5000;
 server.listen(port, function () {

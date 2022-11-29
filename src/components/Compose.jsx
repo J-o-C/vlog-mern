@@ -1,4 +1,6 @@
 import {useState, useRef} from "react";
+import {Link} from "react-router-dom";
+import AddSharpIcon from '@mui/icons-material/AddSharp';
 
 function Compose (props) {
 
@@ -19,10 +21,9 @@ function Compose (props) {
 
     return (
         <div>
-
-            <button className="add" onClick={() => {props.addEntry(data)}}>Add</button>
+            <Link to="/" onClick={() => {props.addEntry(data)}}><button className="add"> <AddSharpIcon /> </button></Link>
+            
             <h2 className="date">{date.current.toLocaleDateString() + " - " + date.current.toLocaleTimeString()}</h2>
-
             <textarea onChange={handleChange} value={text} name="text" className="text-box"></textarea>
         </div>
     );
