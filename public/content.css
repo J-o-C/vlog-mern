@@ -191,3 +191,20 @@ a {
 .delete:hover {
     background-color: #1493A4;
 }
+
+.load-more {
+    display: block;
+    padding: 10px 20px;
+    margin: 10px auto 0 auto;
+    background-color: #121212;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    font-size: .875rem;
+    transition: background-color 0.3s;
+}
+
+.load-more:hover {
+    background-color: #252525;
+    cursor: pointer;
+}

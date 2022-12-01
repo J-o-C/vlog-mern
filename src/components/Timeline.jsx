@@ -23,11 +23,12 @@ function Timeline(props) {
     <div className="content">
         <h1>Entries</h1>
         {dataReady ? entriesArray.current.map((entry) => <Link key={entry._id} to={"timeline/" + entry._id}> <Entry key={entry._id} id={entry._id} date={entry.date} text={entry.content} /> </Link> ) : <div className="loading"></div>}
+
+        <button className="load-more">Load more</button>
         
     </div>
 
     <Link className="compose" to="/compose">+ New</Link>
-    {/* <button className="compose">+ New</button> */}
     </>
    )
 }

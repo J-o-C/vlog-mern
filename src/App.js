@@ -63,15 +63,6 @@ function App() {
 
     <RouterProvider router={router} />
 
-    {/* {doRender ? <Navigator /> : null}
-    {doRender ? <Banner /> : null}
-    <Routes>
-      <Route path="/" element={doRender ? <Timeline changeDoRender={() => {setDoRender(prevValue => !prevValue);}} /> : <Compose addEntry={addEntry} />} />
-      <Route path="/about" element={<h1>about</h1>} />
-      <Route path="/contact-us" element={<h1>contact us</h1>} />
-    </Routes> */}
-
-
   </div>);
 }
 

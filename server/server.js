@@ -22,8 +22,7 @@ const entrySchema = new mongoose.Schema({
 const Entry = mongoose.model("Entry", entrySchema);
 
 server.get("/entries", async (req, res) => {
-    const entries = await Entry.find().exec();
-    entries.reverse();
+    const entries = await Entry.find().sort({"_id": -1}).limit(5);
     res.send(JSON.stringify(entries));
 
 });
@@ -34,6 +33,10 @@ server.get("/single/:id", async (req, res) => {
     res.send(JSON.stringify(singleEntry));
 });
 
+server.post("/entries", async (req, res) => {
+    const entriesSkipped = req.body.counter * 5;
+    const entries = await Entry.find().sort({"_id": -1}).skip(entriesSkipped).limit(5);
+});
 
 server.post("/compose", async (req, res) => {
     const {date, text} = req.body;
