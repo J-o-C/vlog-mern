@@ -25,6 +25,7 @@ server.get("/entries", async (req, res) => {
     const entries = await Entry.find().sort({"_id": -1}).limit(5);
     res.send(JSON.stringify(entries));
 
+
 });
 
 server.get("/single/:id", async (req, res) => {
@@ -34,19 +35,22 @@ server.get("/single/:id", async (req, res) => {
 });
 
 server.post("/entries", async (req, res) => {
-    const entriesSkipped = req.body.counter * 5;
+    const entriesSkipped = req.body.length;
     const entries = await Entry.find().sort({"_id": -1}).skip(entriesSkipped).limit(5);
+    res.send(JSON.stringify(entries));
+
 });
 
 server.post("/compose", async (req, res) => {
     const {date, text} = req.body;
-
     const newEntry = new Entry({
         date: date,
         content: text
     });
 
     newEntry.save();
+
+    res.send(JSON.stringify({status: "okay"}))
 
 });
 
