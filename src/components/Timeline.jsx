@@ -4,15 +4,16 @@ import Entry from "./Entry";
 
 
 function Timeline(props) {
+    const [countEntries, setCountEntries] = useState(0);
     const [entriesArray, setEntriesArray] = useState([]);
-    // const entriesArray = useRef({current: []}); 
     const [dataReady, setDataReady] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:5000/entries")
         .then(response => response.json())
         .then(data => {
-            setEntriesArray(data);
+            setEntriesArray(data.entries);
+            setCountEntries(data.count);
             setDataReady(true);
         })
 
@@ -33,7 +34,6 @@ function Timeline(props) {
                 return [...prevValues, ...data];
             })
             setDataReady(true);
-            console.log(entriesArray);
         });
 
         
@@ -45,9 +45,9 @@ function Timeline(props) {
     <div className="content">
         <h1>Entries</h1>
         {entriesArray.map((entry) => <Link key={entry._id} to={"timeline/" + entry._id}> <Entry key={entry._id} id={entry._id} date={entry.date} text={entry.content} /> </Link> )}
-
-        {dataReady ? <button onClick={loadMore} className="load-more">Load more</button> : <div className="loading"></div>}
         
+        {dataReady && (entriesArray.length < countEntries) ? <button onClick={loadMore} className="load-more">Load more</button> : null}
+        {dataReady ? null : <div className="loading"></div>}
         
     </div>
 

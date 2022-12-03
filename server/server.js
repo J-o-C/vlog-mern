@@ -23,9 +23,12 @@ const Entry = mongoose.model("Entry", entrySchema);
 
 server.get("/entries", async (req, res) => {
     const entries = await Entry.find().sort({"_id": -1}).limit(5);
-    res.send(JSON.stringify(entries));
-
-
+    const count = await Entry.countDocuments();
+    const data = {
+        entries: entries,
+        count: count
+    }
+    res.send(JSON.stringify(data));
 });
 
 server.get("/single/:id", async (req, res) => {
