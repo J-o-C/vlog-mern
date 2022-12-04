@@ -208,3 +208,51 @@ a {
     background-color: #252525;
     cursor: pointer;
 }
+
+.confirmation {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #222222;
+    transition: all .1s;
+    transform: scale(1);
+}
+
+.confirmation button:first-child {
+    margin-right: 5px;
+}
+
+.confirmation button {
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.confirmation a {
+    padding: 0;
+    width: 70%;
+}
+
+
+.yes {
+    border: none;
+    background-color: #c82333;
+}
+
+.no {
+    background-color: #222222;
+    border: 1px solid #fff;
+}
+
+.confirmation-hide {
+    display: none;
+    visibility: hidden;
+    transition: all 0.1s;
+    transform: scale(0);
+}
+
+

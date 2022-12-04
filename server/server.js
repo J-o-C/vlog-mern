@@ -51,15 +51,25 @@ server.post("/compose", async (req, res) => {
         content: text
     });
 
-    newEntry.save();
-
-    res.send(JSON.stringify({status: "okay"}))
+    newEntry.save(function (error) {
+        if (error) {
+            res.send(JSON.stringify({message: "Error when saving entry", succeed: false}));
+        } else {
+            res.send(JSON.stringify({message: "Entry saved succesfully", succeed: true}));
+        }
+    });
 
 });
 
 server.post("/delete", async (req, res) => {
-    await Entry.deleteOne({_id: req.body.id}); 
-    res.send(JSON.stringify({res: "okay"}));
+    await Entry.deleteOne({_id: req.body.id})
+    .then( () => {
+        res.send(JSON.stringify({message: "Entry deleted succesfully", succeed: true}));
+    })
+    .catch((err) => {
+        res.send(JSON.stringify({message: "Error when deleting entry", succeed: false}));
+    })
+    
 });
 
 const port = 5000;
